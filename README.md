@@ -24,7 +24,7 @@ docker build --file Dockerfile --build-arg endpoint=<prod-endpoint> --build-arg 
 ```
 
 ```shell
-docker run -it slateci-client:prod
+docker run -it -v /<repo-location>/work:/work slateci-client:prod
 ```
 
 ### Development
@@ -36,5 +36,5 @@ docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg t
 ```
 
 ```shell
-docker run -it slateci-client:dev
+docker run -it -v /<repo-location>/work:/work slateci-client::dev
 ```

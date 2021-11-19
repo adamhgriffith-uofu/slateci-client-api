@@ -4,18 +4,12 @@ FROM rockylinux/rockylinux:8
 # Docker image arguments:
 ARG endpoint
 ARG token
+ARG username
 
-RUN mkdir -p -m 0700 "$HOME/.slate"
-
-# Set the endpoint:
-RUN echo ${endpoint} > "$HOME/.slate/endpoint"
-
-# Set the token:
-RUN echo ${token} > "$HOME/.slate/token" && \
-    chmod 600 "$HOME/.slate/token"
+# Package installs/updates:
+RUN dnf install openssh-clients -y
 
 # Download and install the CLI:
-WORKDIR /tmp
 RUN curl -LO https://jenkins.slateci.io/artifacts/client/slate-linux.tar.gz && \
     curl -LO https://jenkins.slateci.io/artifacts/client/slate-linux.sha256
 RUN sha256sum -c slate-linux.sha256 || exit 1
@@ -23,11 +17,37 @@ RUN tar xzvf slate-linux.tar.gz && \
     mv slate /usr/bin/slate && \
     rm slate-linux.tar.gz slate-linux.sha256
 
-# Mount any local files as needed:
-RUN mkdir /work
-VOLUME /work
-
-# Run once the container has started:
+# Prepare entrypoint:
 COPY ./entrypoint.sh ./
 RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+
+# Set the work directory:
+RUN mkdir /work
+
+# Set the SLATE API user:
+RUN useradd -ms /bin/bash ${username} && \
+    chown ${username}:${username} /work
+WORKDIR /home/${username}
+
+# Set the SSH private key:
+COPY ./ssh/id_rsa ./.ssh/id_rsa
+RUN chown ${username}:${username} ./.ssh/id_rsa
+
+# Switch to SLATE API user:
+USER ${username}
+
+# Set SLATE home:
+RUN mkdir -p -m 0700 ./.slate
+
+# Set the endpoint:
+RUN echo ${endpoint} > ./.slate/endpoint
+
+# Set the token:
+RUN echo ${token} > ./.slate/token && \
+    chmod 600 ./.slate/token
+
+# Volumes
+VOLUME [ "/work" ]
+
+# Run once the container has started:
+ENTRYPOINT [ "/entrypoint.sh" ]
