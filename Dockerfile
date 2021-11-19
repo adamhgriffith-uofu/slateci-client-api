@@ -23,6 +23,10 @@ RUN tar xzvf slate-linux.tar.gz && \
     mv slate /usr/bin/slate && \
     rm slate-linux.tar.gz slate-linux.sha256
 
+# Mount any local files as needed:
+RUN mkdir /work
+VOLUME /work
+
 # Run once the container has started:
 COPY ./entrypoint.sh ./
 RUN chmod +x ./entrypoint.sh

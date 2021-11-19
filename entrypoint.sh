@@ -3,9 +3,14 @@
 # Enable strict mode:
 set -euo pipefail
 
-# Welcome message
-echo "********************* Metadata *********************"
-echo Connection: $(cat "$HOME/.slate/endpoint")
-echo "****************************************************"
+# Connection Information:
+echo "======= Connection Information ========================================================================"
+echo Endpoint: $(cat "$HOME/.slate/endpoint")
+echo ""
+echo "$(slate whoami 2>&1 | head -n 2)"
+echo ""
+slate version
+echo "======================================================================================================="
 
+cd ~
 /bin/bash
