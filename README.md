@@ -8,7 +8,7 @@ Containerized SLATE CLI with API SSH.
 
 ### Dockerfile Arguments
 
-The `Dockerfile` provides the following build arguments.
+The `Dockerfile` provides the following build arguments:
 
 | Name | Required | Description |
 | --- | --- | --- |
@@ -18,15 +18,15 @@ The `Dockerfile` provides the following build arguments.
 
 ### SSH Key Files
 
-> **_NOTE:_** Key files will be ignored by git.
+> **_NOTE:_** Key files added to `/<repo-location>/ssh` will be ignored by git.
 
-Place the SLATE API `id_rsa` private key file (counterpart to the public key sent to Lincoln Bryant) at `/<repo-location>/ssh/id_rsa`.
+Place your SLATE API private key (counterpart to the public key sent to Lincoln Bryant) at `/<repo-location>/ssh/id_rsa`.
 
-## Build and Use
+## Build and Run
 
 ### Production
 
-Build the Docker container with production build arguments.
+Build the Docker container with production `build-arg`s:
 
 ```shell
 docker build --file Dockerfile --build-arg endpoint=<prod-endpoint> --build-arg token=<prod-token> --build-arg username=<username> --tag slateci-client-api:prod .
@@ -49,9 +49,11 @@ Server supported API versions: v1alpha3
 [username@1234 ~]$
 ```
 
+* Use the `/<repo-location>/work:/work` volume to mount files from your machine to the container.
+
 ### Development
 
-Build the Docker container with development build arguments.
+Build the Docker container with development `build-arg`s:
 
 ```shell
 docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg token=<dev-token> --build-arg username=<username> --tag slateci-client-api:dev .
@@ -73,6 +75,8 @@ Server supported API versions: v1alpha3
 =======================================================================================================
 [username@1234 ~]$
 ```
+
+* Use the `/<repo-location>/work:/work` volume to mount files from your machine to the container.
 
 ## API SSH Commands
 
