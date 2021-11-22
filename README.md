@@ -21,11 +21,11 @@ The `Dockerfile` provides the following build arguments.
 Build and run the Docker container for production.
 
 ```shell
-docker build --file Dockerfile --build-arg endpoint=<prod-endpoint> --build-arg token=<prod-token> --build-arg username=<username> --tag slateci-client:prod .
+docker build --file Dockerfile --build-arg endpoint=<prod-endpoint> --build-arg token=<prod-token> --build-arg username=<username> --tag slateci-client-api:prod .
 ```
 
 ```shell
-docker run -it -v /<repo-location>/work:/work slateci-client:prod
+docker run -it -v /<repo-location>/work:/work slateci-client-api:prod
 ```
 
 ### Development
@@ -33,11 +33,11 @@ docker run -it -v /<repo-location>/work:/work slateci-client:prod
 Build and run the Docker container for development.
 
 ```shell
-docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg token=<dev-token> --build-arg username=<username> --tag slateci-client:dev .
+docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg token=<dev-token> --build-arg username=<username> --tag slateci-client-api:dev .
 ```
 
 ```shell
-docker run -it -v /<repo-location>/work:/work slateci-client::dev
+docker run -it -v /<repo-location>/work:/work slateci-client-api::dev
 ```
 
 ## API SSH Commands
