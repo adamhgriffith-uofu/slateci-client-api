@@ -2,7 +2,7 @@
 
 > **_NOTE:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) in order to make any sense.
 
-Containerized SLATE CLI access.
+Containerized SLATE CLI with API SSH.
 
 ## Arguments
 
@@ -40,9 +40,9 @@ docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg t
 docker run -it -v /<repo-location>/work:/work slateci-client::dev
 ```
 
-## SSH Commands
+## API SSH Commands
 
-The `username` and SSH keys are already applied to the container in a standard way. Therefore, the once lengthy `ssh` commands may now be severely shortened. For example:
+The `username` and API SSH keys are already applied to the container in a standard way. Therefore, the once lengthy `ssh` commands may now be severely shortened. For example:
 
 ```shell
 [username@1234 ~]$ ssh -i /path/to/key -J <username>@<bastion-hostname> <username>@<endpoint-hostname>
