@@ -31,7 +31,7 @@ WORKDIR /home/${username}
 
 # Set the SSH private key:
 COPY ./ssh/id_rsa ./.ssh/id_rsa
-RUN chown ${username}:${username} ./.ssh/id_rsa
+RUN chown -R ${username}:${username} ./.ssh
 
 # Switch to SLATE API user:
 USER ${username}
