@@ -1,4 +1,4 @@
-# SLATE Client & Access
+# SLATE Client and API
 
 > **_IMPORTANT:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
 
