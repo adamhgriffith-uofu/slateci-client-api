@@ -16,15 +16,15 @@ cat > "$HOME/.ssh/config" <<EOF
 Host slate-bastion-host
   HostName ${conf_bastion_hostname}
   Port ${conf_bastion_port}
-  User $(eval whoami)
-  IdentityFile /home/$(eval whoami)/.ssh/id_rsa_slate
+  User ${SLATE_API_USER}
+  IdentityFile /root/.ssh/id_rsa_slate
 
 ### The internal SLATE API host
 Host slate-api-host
   HostName ${conf_api_hostname}
   Port ${conf_api_port}
-  User $(eval whoami)
-  IdentityFile /home/$(eval whoami)/.ssh/id_rsa_slate
+  User ${SLATE_API_USER}
+  IdentityFile /root/.ssh/id_rsa_slate
   ProxyJump slate-bastion-host
 
 EOF

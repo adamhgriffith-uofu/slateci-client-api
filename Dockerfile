@@ -7,6 +7,7 @@ ARG token
 ARG username
 
 # Docker container environmental variables:
+ENV SLATE_API_USER=${username}
 ENV SLATE_ENV=${env}
 
 # Package installs/updates:
@@ -27,24 +28,15 @@ RUN chmod +x ./docker-entrypoint.sh
 # Set the work directory:
 RUN mkdir /work
 
-# Set the SLATE API user & give /work access:
-RUN useradd -ms /bin/bash ${username} && \
-    chown -R ${username}:${username} /work
-
 # Add the SLATE resource files:
 COPY ./resources ./resources
-RUN chmod +x /resources/yml.sh && \
-    chown -R ${username}:${username} ./resources/
+RUN chmod +x /resources/yml.sh
 
 # Change working directory:
-WORKDIR /home/${username}
+WORKDIR /root
 
 # Set the SSH private key:
 COPY ./ssh/id_rsa_slate ./.ssh/id_rsa_slate
-RUN chown -R ${username}:${username} ./.ssh
-
-# Switch to SLATE API user:
-USER ${username}
 
 # Set SLATE home:
 RUN mkdir -p -m 0700 ./.slate
@@ -58,4 +50,3 @@ VOLUME [ "/work" ]
 
 # Run once the container has started:
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-# ENTRYPOINT bash

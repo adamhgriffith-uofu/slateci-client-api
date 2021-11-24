@@ -40,7 +40,7 @@ docker build --file Dockerfile --build-arg env=prod --build-arg token=<prod-toke
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@desktop ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::prod
+[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::prod
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
@@ -51,7 +51,7 @@ Client Version Server Version
 1234           1234          
 Server supported API versions: v1alpha3
 =======================================================================================================
-[username@1234 ~]$
+[root@1234 ~]$
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
@@ -68,7 +68,7 @@ docker build --file Dockerfile --build-arg token=<dev-token> --build-arg usernam
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@desktop ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::dev
+[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::dev
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
@@ -79,7 +79,7 @@ Client Version Server Version
 1234           1234          
 Server supported API versions: v1alpha3
 =======================================================================================================
-[username@1234 ~]$
+[root@1234 ~]$
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
@@ -90,7 +90,7 @@ Server supported API versions: v1alpha3
 The `username` and API SSH keys are already applied to `~/.ssh/config` in a standard way. The upshot is that lengthy commands like the following are no longer necessary.
 
 ```shell
-[username@1234 ~]$ ssh -i /path/to/key -J <username>@<bastion-hostname> -i /path/to/key <username>@<endpoint-hostname>
+[root@1234 ~]$ ssh -i /path/to/key -J <username>@<bastion-hostname> -i /path/to/another/key <username>@<endpoint-hostname>
 ```
 
 Instead, make use of the shorter commands described below.
@@ -98,11 +98,11 @@ Instead, make use of the shorter commands described below.
 ### Internal SLATE API Host
 
 ```shell
-[username@1234 ~]$ ssh slate-api-host
+[root@1234 ~]$ ssh slate-api-host
 ```
 
 ### External SLATE Bastion Host
 
 ```shell
-[username@1234 ~]$ ssh slate-bastion-host
+[rootssh@1234 ~]$ ssh slate-bastion-host
 ```
