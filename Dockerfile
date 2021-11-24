@@ -28,9 +28,12 @@ RUN chmod +x ./docker-entrypoint.sh
 # Set the work directory:
 RUN mkdir /work
 
-# Add the SLATE resource files:
-COPY ./resources ./resources
-RUN chmod +x /resources/yml.sh
+# Add the SLATE envs:
+COPY ./envs ./slate-envs
+
+# Add the scripts:
+COPY ./scripts ./slate-scripts
+RUN chmod +x /slate-scripts/yml.sh
 
 # Change working directory:
 WORKDIR /root
