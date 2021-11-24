@@ -1,0 +1,6 @@
+api:
+  hostname: api-dev.slateci.io
+  port: 18080
+bastion:
+  hostname: bastion.slateci.net
+  port: 22

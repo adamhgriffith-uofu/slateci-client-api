@@ -1,6 +1,6 @@
 # SLATE Client & Access
 
-> **_IMPORTANT:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) in order to make any sense.
+> **_IMPORTANT:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
 
 Containerized SLATE CLI with API SSH access.
 
@@ -12,19 +12,20 @@ The `Dockerfile` provides the following build arguments:
 
 | Name | Required | Description |
 | --- | --- | --- |
-| `endpoint` | Yes | See [CLI Access](https://portal.slateci.io/cli) and/or meeting notes for the development values. |
-| `token` | Yes | See [CLI Access](https://portal.slateci.io/cli) and/or meeting notes for the development values. |
-| `username` | Yes | The SLATE API username sent to Lincoln Bryant for integration with Puppet, SLATE, and the Bastion servers. |
+| `env` | No | The SLATE API environment. Allowed values include `dev` and `prod` where `dev` is the default value. |
+| `token` | Yes | The SLATE CLI token associated with `env`. Each SLATE API environment requires its own token CLI token. |
+| `username` | Yes | The SLATE API user name for Puppet, SLATE, and the Bastion servers. The user name is shared between all SLATE environments. |
 
 ### SSH Key Files
 
-> **_NOTE:_** Keys added to `/<repo-location>/ssh` will be ignored by git.
+> **_NOTE:_** Keys added to `/<repo-location>/ssh` will be ignored by Git so don't worry :).
 
-During the build process Docker will copy relevant SSH keys into the image.
+* During the build process Docker will copy relevant SSH keys into the image.
+* Please copy all described keys below to `/<repo-location>/ssh` before building the images.
 
 | Name | Required | Description |
 | --- | --- | --- |
-| `id_rsa` | Yes | Counterpart to the public key sent to Lincoln Bryant for Puppet, SLATE, and the Bastion servers. |
+| `id_rsa_slate` | Yes | Counterpart to the public key for Puppet, SLATE, and the Bastion servers. |
 
 ## Build and Run
 
@@ -33,7 +34,7 @@ During the build process Docker will copy relevant SSH keys into the image.
 Build the Docker image with production `build-arg`s:
 
 ```shell
-docker build --file Dockerfile --build-arg endpoint=<prod-endpoint> --build-arg token=<prod-token> --build-arg username=<username> --tag slateci-client-api:prod .
+docker build --file Dockerfile --build-arg env=prod --build-arg token=<prod-token> --build-arg username=<username> --tag slateci-client-api:prod .
 ```
 
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
@@ -53,14 +54,15 @@ Server supported API versions: v1alpha3
 [username@1234 ~]$
 ```
 
-* Use the `/<repo-location>/work:/work` volume to mount files from your machine to the container.
+* Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
+* SSH'ing into the SLATE API server is now accomplished via `ssh slate-api` (see the **API SSH Commands** section for additional information).
 
 ### Development
 
 Build the Docker image with development `build-arg`s:
 
 ```shell
-docker build --file Dockerfile --build-arg endpoint=<dev-endpoint> --build-arg token=<dev-token> --build-arg username=<username> --tag slateci-client-api:dev .
+docker build --file Dockerfile --build-arg token=<dev-token> --build-arg username=<username> --tag slateci-client-api:dev .
 ```
 
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
@@ -80,19 +82,27 @@ Server supported API versions: v1alpha3
 [username@1234 ~]$
 ```
 
-* Use the `/<repo-location>/work:/work` volume to mount files from your machine to the container.
+* Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
+* SSH'ing into the SLATE API server is now accomplished via `ssh slate-api` (see the **API SSH Commands** section for additional information).
 
 ## API SSH Commands
 
-The `username` and API SSH keys are already applied to the container in a standard way. Therefore, the once lengthy `ssh` commands may now be severely shortened. For example:
+The `username` and API SSH keys are already applied to `~/.ssh/config` in a standard way. The upshot is that lengthy commands like the following are no longer necessary.
 
 ```shell
-[username@1234 ~]$ ssh -i /path/to/key -J <username>@<bastion-hostname> <username>@<endpoint-hostname>
+[username@1234 ~]$ ssh -i /path/to/key -J <username>@<bastion-hostname> -i /path/to/key <username>@<endpoint-hostname>
 ```
 
-becomes:
+Instead, make use of the shorter commands described below.
+
+### Internal SLATE API Host
 
 ```shell
-[username@1234 ~]$ ssh -J <bastion-hostname> <endpoint-hostname>
+[username@1234 ~]$ ssh slate-api
 ```
 
+### External SLATE Bastion Host
+
+```shell
+[username@1234 ~]$ ssh slate-bastion
+```
