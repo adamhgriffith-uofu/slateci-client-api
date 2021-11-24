@@ -55,7 +55,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing into the SLATE API server is now accomplished via `ssh slate-api` (see the **API SSH Commands** section for additional information).
+* SSH'ing is now very simple (see the **API SSH Commands** section for additional information).
 
 ### Development
 
@@ -83,7 +83,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing into the SLATE API server is now accomplished via `ssh slate-api` (see the **API SSH Commands** section for additional information).
+* SSH'ing is now very simple (see the **API SSH Commands** section for additional information).
 
 ## API SSH Commands
 
@@ -98,11 +98,11 @@ Instead, make use of the shorter commands described below.
 ### Internal SLATE API Host
 
 ```shell
-[username@1234 ~]$ ssh slate-api
+[username@1234 ~]$ ssh slate-api-host
 ```
 
 ### External SLATE Bastion Host
 
 ```shell
-[username@1234 ~]$ ssh slate-bastion
+[username@1234 ~]$ ssh slate-bastion-host
 ```
