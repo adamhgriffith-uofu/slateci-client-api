@@ -30,6 +30,9 @@ Host slate-api-host
 EOF
 chmod 600 "$HOME/.ssh/config"
 
+# Test SLATE API connection for errors:
+slate whoami > /dev/null
+
 # Connection Information:
 echo "======= Connection Information ========================================================================"
 echo Endpoint: $(cat "$HOME/.slate/endpoint")
