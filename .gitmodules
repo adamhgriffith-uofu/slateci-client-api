@@ -1,3 +1,6 @@
 [submodule "kubespray"]
 	path = kubespray
 	url = https://github.com/kubernetes-sigs/kubespray.git
+[submodule "submodules/slate-ansible"]
+	path = submodules/slate-ansible
+	url = https://github.com/slateci/slate-ansible.git
