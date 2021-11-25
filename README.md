@@ -40,7 +40,7 @@ docker build --file Dockerfile --build-arg env=prod --build-arg token=<prod-toke
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::prod
+[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api:prod
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
@@ -68,7 +68,7 @@ docker build --file Dockerfile --build-arg token=<dev-token> --build-arg usernam
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api::dev
+[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api:dev
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
