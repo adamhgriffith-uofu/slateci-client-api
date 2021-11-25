@@ -4,8 +4,10 @@
 
 # Git Related Items
 .git
+.gitattributes
 .github
 .gitignore
+.gitmodules
 
 # Other
 LICENSE

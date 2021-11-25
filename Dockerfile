@@ -25,9 +25,6 @@ RUN tar xzvf slate-linux.tar.gz && \
 COPY ./docker-entrypoint.sh ./
 RUN chmod +x ./docker-entrypoint.sh
 
-# Set the work directory:
-RUN mkdir /work
-
 # Add the SLATE envs:
 COPY ./envs ./slate-envs
 
@@ -38,8 +35,9 @@ RUN chmod +x /slate-scripts/yml.sh
 # Change working directory:
 WORKDIR /root
 
-# Set the SSH private key:
-COPY ./secrets/id_rsa_slate ./.ssh/id_rsa_slate
+# Set the SSH keys:
+COPY ./secrets/ssh ./.ssh/
+RUN chmod 600 -R ./.ssh/
 
 # Set SLATE home:
 RUN mkdir -p -m 0700 ./.slate
@@ -47,6 +45,9 @@ RUN mkdir -p -m 0700 ./.slate
 # Set the token:
 RUN echo ${token} > ./.slate/token && \
     chmod 600 ./.slate/token
+
+# Set the work directory:
+RUN mkdir /work
 
 # Volumes
 VOLUME [ "/work" ]
