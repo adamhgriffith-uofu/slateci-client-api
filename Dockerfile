@@ -39,7 +39,7 @@ RUN chmod +x /slate-scripts/yml.sh
 WORKDIR /root
 
 # Set the SSH private key:
-COPY ./ssh/id_rsa_slate ./.ssh/id_rsa_slate
+COPY ./secrets/id_rsa_slate ./.ssh/id_rsa_slate
 
 # Set SLATE home:
 RUN mkdir -p -m 0700 ./.slate

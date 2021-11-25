@@ -18,10 +18,10 @@ The `Dockerfile` provides the following build arguments:
 
 ### SSH Key Files
 
-> **_NOTE:_** Keys added to `/<repo-location>/ssh` will be ignored by Git so don't worry :).
+> **_NOTE:_** All files added to `/<repo-location>/secrets` will be ignored by Git so don't worry :).
 
 * During the build process Docker will copy relevant SSH keys into the image.
-* Please copy all described keys below to `/<repo-location>/ssh` before building the images.
+* Please copy all described keys below to `/<repo-location>/secrets` before building the images.
 
 | Name | Required | Description |
 | --- | --- | --- |
