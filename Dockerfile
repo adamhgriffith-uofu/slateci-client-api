@@ -25,12 +25,15 @@ RUN tar xzvf slate-linux.tar.gz && \
 COPY ./docker-entrypoint.sh ./
 RUN chmod +x ./docker-entrypoint.sh
 
-# Add the SLATE envs:
-COPY ./envs ./slate-envs
+# Create the docker directory:
+RUN mkdir /docker
+
+# Add the SLATE API envs:
+COPY ./envs ./docker/envs
 
 # Add the scripts:
-COPY ./scripts ./slate-scripts
-RUN chmod +x /slate-scripts/yml.sh
+COPY ./scripts ./docker/scripts
+RUN chmod +x ./docker/scripts/yml.sh
 
 # Change working directory:
 WORKDIR /root

@@ -4,8 +4,8 @@
 set -euo pipefail
 
 # Load environmental values:
-source "/slate-scripts/yml.sh"
-create_variables "/slate-envs/${SLATE_ENV}.yml" "conf_"
+source "/docker/scripts/yml.sh"
+create_variables "/docker/envs/${SLATE_ENV}.yml" "conf_"
 
 # Set the endpoint:
 echo "https://${conf_api_hostname}:${conf_api_port}" > "$HOME/.slate/endpoint"
