@@ -3,10 +3,12 @@ FROM rockylinux/rockylinux:8
 
 # Docker image build arguments:
 ARG env=dev
+ARG fabricusername
 ARG token
 ARG username
 
 # Docker container environmental variables:
+ENV FABRIC_API_USER=${fabricusername}
 ENV SLATE_API_USER=${username}
 ENV SLATE_ENV=${env}
 

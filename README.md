@@ -13,6 +13,7 @@ The `Dockerfile` provides the following build arguments:
 | Name | Required | Description |
 | --- | --- | --- |
 | `env` | No | The SLATE API environment. Allowed values include `dev` and `prod` where `dev` is the default value. |
+| `fabricusername` | No | The Fabric API user name for Fabric and the Bastion servers. If not specified this will be set to `username`. |
 | `token` | Yes | The SLATE CLI token associated with `env`. Each SLATE API environment requires its own token CLI token. |
 | `username` | Yes | The SLATE API user name for Puppet, SLATE, and the Bastion servers. The user name is shared between all SLATE environments. |
 

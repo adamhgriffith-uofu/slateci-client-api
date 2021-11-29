@@ -1,6 +1,11 @@
-api:
-  hostname: api.slateci.io
-  port: 443
-bastion:
-  hostname: bastion.slateci.net
-  port: 22
+fabric:
+  bastion:
+    hostname: bastion-1.fabric-testbed.net
+    port: 22
+slate:
+  api:
+    hostname: api.slateci.io
+    port: 443
+  bastion:
+    hostname: bastion.slateci.net
+    port: 22
