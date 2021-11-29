@@ -1,6 +1,16 @@
+# Author: Fengping Hu
+#
+# Instructions:
+#   1. Add the following as a new cell in a notebook hosted on Fabric's Jupyter Notebook Hub.
+#   2. Add `hosts.j2` adjacent to that notebook in the file system.
+#   3. Evaluate this code.
+#   4. Once `hosts.yaml` has been generated copy it to `/submodules/kubespray/inventory/fabric/hosts.yaml` in this
+#      repository.
+#   5. Copy the file whose path is `ssh_key_file_priv` to `/secrets/ssh/<filename>` in this repository.
+#
+
 import yaml
 from jinja2 import Environment, FileSystemLoader
-
 
 # Load template file:
 env = Environment(loader = FileSystemLoader('./'), trim_blocks=True, lstrip_blocks=True)
