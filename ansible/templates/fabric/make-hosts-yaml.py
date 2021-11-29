@@ -7,7 +7,7 @@
 #   3. Evaluate this code.
 #   4. Once `hosts.yaml` has been generated copy it to `/submodules/kubespray/inventory/fabric/hosts.yaml` in this
 #      repository.
-#   5. Copy the file whose path is `ssh_key_file_priv` to `/secrets/ssh/<filename>` in this repository.
+#   5. Copy the file whose path is `ssh_key_file_priv` to `/secrets/ssh/id_rsa_fabric_slice` in this repository.
 #
 
 import yaml

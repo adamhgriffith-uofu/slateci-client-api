@@ -30,6 +30,7 @@ The `Dockerfile` provides the following build arguments:
 | --- | --- | --- |
 | `id_rsa_slate` | Yes | Counterpart to the public key for Puppet, SLATE, and the Bastion servers. |
 | `id_rsa_fabric` | No | Counterpart to the public key for Fabric and the Bastion servers. |
+| `id_rsa_fabric_slice` | No | Counterpart to the public key for the Fabric Jupyter notebook where the slice has been defined and requested. |
 
 ## Build and Run
 
