@@ -59,7 +59,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing is now very simple (see the **API SSH Commands** section for additional information).
+* SSH'ing is now very simple (see [SSH Commands](../README.md#ssh-commands) for additional information).
 
 ### Development
 
@@ -87,9 +87,9 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing is now very simple (see the **API SSH Commands** section for additional information).
+* SSH'ing is now very simple (see [SSH Commands](../README.md#ssh-commands) for additional information).
 
-## API SSH Commands
+## SSH Commands
 
 The `username` and API SSH keys are already applied to `~/.ssh/config` in a standard way. The upshot is that lengthy commands like the following are no longer necessary.
 
