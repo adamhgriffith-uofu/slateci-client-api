@@ -1,7 +1,8 @@
 # Author: Fengping Hu
 #
 # Instructions:
-#   1. Add the following as a new cell in a notebook hosted on Fabric's Jupyter Notebook Hub.
+#   1. Add the following as a new cell in a notebook hosted on Fabric's Jupyter Notebook Hub where you have defined
+#      and requested a slice.
 #   2. Add `hosts.j2` adjacent to that notebook in the file system.
 #   3. Evaluate this code.
 #   4. Once `hosts.yaml` has been generated copy it to `/submodules/kubespray/inventory/fabric/hosts.yaml` in this
