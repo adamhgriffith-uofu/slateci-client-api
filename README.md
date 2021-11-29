@@ -59,7 +59,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing is now very simple (see [SSH Commands](../README.md#ssh-commands) for additional information).
+* SSH'ing is now very simple (see [SSH Commands](#ssh-commands) for additional information).
 
 ### Development
 
@@ -87,7 +87,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
-* SSH'ing is now very simple (see [SSH Commands](../README.md#ssh-commands) for additional information).
+* SSH'ing is now very simple (see [SSH Commands](#ssh-commands) for additional information).
 
 ## SSH Commands
 
