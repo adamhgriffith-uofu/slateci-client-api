@@ -2,7 +2,9 @@
 
 > **_IMPORTANT:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
 
-Containerized SLATE CLI with API SSH access.
+Containerized SLATE CLI with API SSH access using [Kubespray](https://github.com/kubernetes-sigs/kubespray) and [slate-ansible](https://github.com/slateci/slate-ansible) as Git submodules.
+
+* Ansible tools have been split out into a separate Docker image as described in [README](ansible/README.md).
 
 ## Requirements
 
@@ -19,14 +21,15 @@ The `Dockerfile` provides the following build arguments:
 
 ### SSH Key Files
 
-> **_NOTE:_** All files added to `/<repo-location>/secrets` will be ignored by Git so don't worry :).
+> **_NOTE:_** All files added to `/<repo-location>/secrets/ssh` will be ignored by Git so don't worry :).
 
 * During the build process Docker will copy relevant SSH keys into the image.
-* Please copy all described keys below to `/<repo-location>/secrets` before building the images.
+* Please copy all required keys below to `/<repo-location>/secrets/ssh` before building the images.
 
 | Name | Required | Description |
 | --- | --- | --- |
 | `id_rsa_slate` | Yes | Counterpart to the public key for Puppet, SLATE, and the Bastion servers. |
+| `id_rsa_fabric` | No | Counterpart to the public key for Fabric and the Bastion servers. |
 
 ## Build and Run
 
@@ -96,14 +99,20 @@ The `username` and API SSH keys are already applied to `~/.ssh/config` in a stan
 
 Instead, make use of the shorter commands described below.
 
-### Internal SLATE API Host
+### External Fabric API Host
 
 ```shell
-[root@1234 ~]$ ssh slate-api-host
+[root@1234 ~]$ ssh fabric-bastion-host
 ```
 
 ### External SLATE Bastion Host
 
 ```shell
 [rootssh@1234 ~]$ ssh slate-bastion-host
+```
+
+### Internal SLATE API Host
+
+```shell
+[root@1234 ~]$ ssh slate-api-host
 ```
