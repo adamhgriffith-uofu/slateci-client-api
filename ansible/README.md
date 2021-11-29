@@ -20,7 +20,7 @@ The `Dockerfile` provides the following build arguments:
 
 ### Production
 
-Build the Docker image:
+Build the Docker image while at the root of this repository:
 
 ```shell
 docker build --file ansible/Dockerfile --tag ansiblepy:latest .
