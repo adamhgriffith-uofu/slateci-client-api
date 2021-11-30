@@ -1,6 +1,6 @@
 # SLATE and Ansible
 
-> **_IMPORTANT:_** This repository requires a read-through of [SLATE: Automated Cluster Installation](https://slateci.io/docs/cluster/automated/prerequisites.html) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
+> **_IMPORTANT:_** This tool requires a read-through of [SLATE: Automated Cluster Installation](https://slateci.io/docs/cluster/automated/prerequisites.html) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
 
 Ansible tools for use with SLATE cluster deployments.
 

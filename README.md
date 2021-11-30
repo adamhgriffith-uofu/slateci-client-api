@@ -2,9 +2,11 @@
 
 > **_IMPORTANT:_** This repository requires a read-through of [CLI Access](https://portal.slateci.io/cli) beforehand and if you have questions reach out to the team via SLACK, in an email, or during the working-sessions.
 
-Containerized SLATE CLI with API SSH access using [Kubespray](https://github.com/kubernetes-sigs/kubespray) and [slate-ansible](https://github.com/slateci/slate-ansible) as Git submodules.
+Containerized SLATE CLI with API SSH access. [Git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) include:
+* [Kubespray](https://github.com/kubernetes-sigs/kubespray/tree/a923f4e7c0692229c442b07a531bfb5fc41a23f9) (Tag: v2.15.0 or Commit a923f4e)
+* [slate-ansible](https://github.com/slateci/slate-ansible/tree/9266394ecca3b1e7e265f68cb12fe8824114ba85) (Commit 9266394).
 
-* Ansible tools have been split out into a separate Docker image as described in [README](ansible/README.md).
+Ansible tools have been split out into a separate Docker image as described in [README](ansible/README.md).
 
 ## Requirements
 
