@@ -9,6 +9,7 @@ ARG username
 
 # Docker container environmental variables:
 ENV FABRIC_API_USER=${fabricusername}
+ENV HISTFILE=/work/.bash_history_docker
 ENV SLATE_API_USER=${username}
 ENV SLATE_CLI_TOKEN=${token}
 ENV SLATE_ENV=${env}

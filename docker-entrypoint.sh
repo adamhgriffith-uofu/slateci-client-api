@@ -9,6 +9,11 @@ then
   FABRIC_API_USER="${SLATE_API_USER}"
 fi
 
+if [ ! -f "$HISTFILE" ]
+then
+  touch /work/.bash_history_docker
+fi
+
 # Load environmental values:
 source "/docker/scripts/yml.sh"
 create_variables "/docker/envs/${SLATE_ENV}.yml" "conf_"

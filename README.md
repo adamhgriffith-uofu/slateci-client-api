@@ -119,3 +119,17 @@ Instead, make use of the shorter commands described below.
 ```shell
 [root@1234 ~]$ ssh slate-api-host
 ```
+
+## Persistent Bash History
+
+The history of `bash` commands is stored in `/work/.bash_history_docker`. If `/work` has been specified as a volume this functionality will persist between containers as `.bash_history_docker` will exist on your local machine.
+
+```shell
+[root@123 ~]# history
+    1  echo 'hello world'
+    2  ls -al
+    3  exit
+    4  history
+    5  exit
+    6  history
+```
