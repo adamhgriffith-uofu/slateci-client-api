@@ -14,7 +14,7 @@ ENV SLATE_CLI_TOKEN=${token}
 ENV SLATE_ENV=${env}
 
 # Package installs/updates:
-RUN dnf install openssh-clients -y
+RUN dnf install openssh-clients ncurses which -y
 
 # Download and install the SLATE CLI:
 RUN curl -LO https://jenkins.slateci.io/artifacts/client/slate-linux.tar.gz && \
