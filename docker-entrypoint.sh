@@ -53,7 +53,7 @@ slate whoami > /dev/null
 
 # Connection Information:
 echo "======= Connection Information ========================================================================"
-echo Endpoint: $(cat "$HOME/.slate/endpoint")
+echo Endpoint: $(echo "$SLATE_API_ENDPOINT")
 echo ""
 echo "$(slate whoami 2>&1 | head -n 2)"
 echo ""
