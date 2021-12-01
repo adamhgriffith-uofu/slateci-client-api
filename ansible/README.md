@@ -12,9 +12,9 @@ Ansible tools for use with SLATE cluster deployments.
 
 The `Dockerfile` provides the following build arguments:
 
-| Name | Required | Description |
-| --- | --- | --- |
-| `venvdir` | No | The directory for the virtual Python environment If not specified this will be set to `/root/venv`. |
+| Name      | Required | Description                                                                                         |
+|-----------|----------|-----------------------------------------------------------------------------------------------------|
+| `venvdir` | No       | The directory for the virtual Python environment If not specified this will be set to `/root/venv`. |
 
 ## Build and Run
 
