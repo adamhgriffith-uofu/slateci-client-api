@@ -9,6 +9,7 @@ then
   FABRIC_API_USER="${SLATE_API_USER}"
 fi
 
+# Create the bash history file if necessary:
 if [ ! -f "$HISTFILE" ]
 then
   touch /work/.bash_history_docker
