@@ -44,7 +44,7 @@ Server supported API versions: v1alpha3
 ```
 
 * Use the `/<repo-location>/submodules:/work` volume to mount files from your local machine to the container.
-* SSH'ing is now very simple (see [SSH Commands](/README.md#ssh-commands) for additional information).
+* See [SSH Commands](/README.md#ssh-commands) for information on that topic.
 
 ## Create K8s Cluster
 
