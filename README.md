@@ -6,7 +6,9 @@ Containerized SLATE CLI with API SSH access. [Git submodules](https://git-scm.co
 * [Kubespray](https://github.com/kubernetes-sigs/kubespray/tree/a923f4e7c0692229c442b07a531bfb5fc41a23f9) (Tag: v2.15.0 or Commit a923f4e)
 * [slate-ansible](https://github.com/slateci/slate-ansible/tree/9266394ecca3b1e7e265f68cb12fe8824114ba85) (Commit 9266394).
 
-Ansible tools have been split out into a separate Docker image as described in [README](ansible/README.md).
+Ansible:
+* Tools have been split out into a separate Docker image as described in [README](ansible/README.md).
+* FABRIC-related variables, etc. are just here to make our lives easier when dealing with SSH and Ansible inventory. Other cloud environments may be included at a later date.
 
 ## Requirements
 
