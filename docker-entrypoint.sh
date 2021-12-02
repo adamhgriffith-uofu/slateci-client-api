@@ -18,8 +18,6 @@ fi
 # Load environmental values:
 source "/docker/scripts/yml.sh"
 create_variables "/docker/envs/${SLATE_ENV}.yml" "conf_"
-
-# Set the endpoint:
 export SLATE_API_ENDPOINT="https://${conf_slate_api_hostname}:${conf_slate_api_port}"
 
 # Create the SSH configuration file:
