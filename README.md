@@ -118,7 +118,7 @@ ssh <ssh-host>
 
 ## Persistent Bash History
 
-The `bash` history  is stored in `/work/.bash_history_docker`.
+The `bash` history is stored in `/work/.bash_history_docker`.
 * If `/work` has been specified as a volume the history will persist between containers.
 
 ```shell
