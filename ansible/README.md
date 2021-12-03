@@ -61,19 +61,43 @@ Overwrite the copied `/work/kubespray/inventory/fabric/hosts.yaml` file with one
 Set the Kubernetes version for Kubespray and your cluster. SLATE does not support 1.22 right now so specify any older version.
 
 ```shell
-sed -i 's/kube_version:.*/kube_version:v1.19.7/g' /work/kubespray/inventory/fabric/k8s-cluster.yml
+sed -i 's/kube_version:.*/kube_version: v1.19.7/g' /work/kubespray/inventory/fabric/group_vars/k8s-cluster/k8s-cluster.yml
 ```
+
+Add the nodes to `/root/.ssh/known_hosts` (this sometimes helps prevent Ansible SSH errors):
+
+```shell
+ssh-keyscan -H <node-ipv4> >> ~/.ssh/known_hosts
+```
+
+and so forth.
 
 Create the cluster noting it may take several minutes to complete.
 
 ```shell
 ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --become-user=root -u centos /work/kubespray/cluster.yml
 ```
+## Troubleshooting
 
-If something goes funky don't worry, you can reset the cluster with this command:
+### Full Reset
+
+A.k.a the giant hammer. If something goes funky don't worry, you can reset the cluster with this command:
 
 ```shell
 ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --become-user=root -u centos /work/kubespray/reset.yml
+```
+
+Try running Ansible's commands again.
+
+### SSH Errors
+
+* Sometimes Ansible is going to fail on the SSH step.
+* Verify you can independently `ssh` into each node.
+
+Use the verbose mode for `ssh` to detect granular errors:
+
+```shell
+ssh -J fabric-bastion-host -i /root/.ssh/id_rsa_fabric_slice -vvv centos@<node-ip>
 ```
 
 ## Register K8s Cluster w/SLATE

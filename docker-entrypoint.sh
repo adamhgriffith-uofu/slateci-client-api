@@ -46,6 +46,14 @@ Host slate-api-host
 EOF
 chmod 600 "$HOME/.ssh/config"
 
+# Set up SSH known_hosts
+fabricbastionip=$(dig "${conf_fabric_bastion_hostname}" +short)
+ssh-keyscan -H "${conf_fabric_bastion_hostname}" >> ~/.ssh/known_hosts
+ssh-keyscan -H "${fabricbastionip}" >> ~/.ssh/known_hosts
+slatebastionip=$(dig "${conf_slate_bastion_hostname}" +short)
+ssh-keyscan -H "${conf_slate_bastion_hostname}" >> ~/.ssh/known_hosts
+ssh-keyscan -H "${slatebastionip}" >> ~/.ssh/known_hosts
+
 # Test SLATE API connection for errors:
 slate whoami > /dev/null
 
