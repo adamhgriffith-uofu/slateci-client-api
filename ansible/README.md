@@ -75,7 +75,7 @@ and so forth.
 Create the cluster noting it may take several minutes to complete.
 
 ```shell
-ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --become-user=root -u centos /work/kubespray/cluster.yml
+ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yml --become --become-user=root -u centos /work/kubespray/cluster.yml
 ```
 ## Troubleshooting
 
@@ -84,7 +84,7 @@ ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --becom
 A.k.a the giant hammer. If something goes funky don't worry, you can reset the cluster with this command:
 
 ```shell
-ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --become-user=root -u centos /work/kubespray/reset.yml
+ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yml --become --become-user=root -u centos /work/kubespray/reset.yml
 ```
 
 Try running Ansible's commands again.
@@ -105,5 +105,5 @@ ssh -J fabric-bastion-host -i /root/.ssh/id_rsa_fabric_slice -vvv centos@<node-i
 Use the `slate-ansible` submodule to register the newly created K8s cluster with the SLATE API server.
 
 ```shell
-ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yaml --become --become-user=root -u centos -e "slate_cli_token=$SLATE_CLI_TOKEN" -e "slate_cli_endpoint=$SLATE_CLI_ENDPOINT" /work/slate-ansible/site.yml
+ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yml --become --become-user=root -u centos -e "slate_cli_token=$SLATE_CLI_TOKEN" -e "slate_cli_endpoint=$SLATE_CLI_ENDPOINT" /work/slate-ansible/site.yml
 ```
