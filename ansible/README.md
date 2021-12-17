@@ -64,14 +64,6 @@ Set the Kubernetes version for Kubespray and your cluster. SLATE does not suppor
 sed -i 's/kube_version:.*/kube_version: v1.19.7/g' /work/kubespray/inventory/fabric/group_vars/k8s-cluster/k8s-cluster.yml
 ```
 
-Add the nodes to `/root/.ssh/known_hosts` (this sometimes helps prevent Ansible SSH errors):
-
-```shell
-ssh-keyscan -H <node-ipv4> >> ~/.ssh/known_hosts
-```
-
-and so forth.
-
 Create the cluster noting it may take several minutes to complete.
 
 ```shell
@@ -106,4 +98,10 @@ Use the `slate-ansible` submodule to register the newly created K8s cluster with
 
 ```shell
 ansible-playbook -i /work/kubespray/inventory/fabric/hosts.yml --become --become-user=root -u centos -e "slate_cli_token=$SLATE_CLI_TOKEN" -e "slate_cli_endpoint=$SLATE_CLI_ENDPOINT" /work/slate-ansible/site.yml
+```
+
+If your cluster is behind a NAT add the following:
+
+```shell
+-e 'cluster_access_ip=<node1_ansible_host>:6443' -e 'slate_enable_ingress=false'
 ```
