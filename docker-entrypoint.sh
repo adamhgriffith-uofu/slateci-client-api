@@ -22,6 +22,10 @@ export SLATE_API_ENDPOINT="https://${conf_slate_api_hostname}:${conf_slate_api_p
 
 # Create the SSH configuration file:
 cat > "$HOME/.ssh/config" <<EOF
+### Global Settings
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null
+
 ### The External Fabric Bastion host
 Host fabric-bastion-host
   HostName ${conf_fabric_bastion_hostname}
@@ -45,14 +49,6 @@ Host slate-api-host
   ProxyJump slate-bastion-host
 EOF
 chmod 600 "$HOME/.ssh/config"
-
-# Set up SSH known_hosts
-fabricbastionip=$(dig "${conf_fabric_bastion_hostname}" +short)
-ssh-keyscan -H "${conf_fabric_bastion_hostname}" >> ~/.ssh/known_hosts
-ssh-keyscan -H "${fabricbastionip}" >> ~/.ssh/known_hosts
-slatebastionip=$(dig "${conf_slate_bastion_hostname}" +short)
-ssh-keyscan -H "${conf_slate_bastion_hostname}" >> ~/.ssh/known_hosts
-ssh-keyscan -H "${slatebastionip}" >> ~/.ssh/known_hosts
 
 # Test SLATE API connection for errors:
 slate whoami > /dev/null
