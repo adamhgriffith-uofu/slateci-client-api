@@ -29,24 +29,26 @@ UserKnownHostsFile /dev/null
 ### The External Fabric Bastion host
 Host fabric-bastion-host
   HostName ${conf_fabric_bastion_hostname}
+  IdentitiesOnly yes
+  IdentityFile /root/.ssh/id_rsa_fabric
   Port ${conf_fabric_bastion_port}
   User ${FABRIC_API_USER}
-  IdentityFile /root/.ssh/id_rsa_fabric
 
 ### The External SLATE Bastion host
 Host slate-bastion-host
   HostName ${conf_slate_bastion_hostname}
+  IdentitiesOnly yes
+  IdentityFile /root/.ssh/id_rsa_slate
   Port ${conf_slate_bastion_port}
   User ${SLATE_API_USER}
-  IdentityFile /root/.ssh/id_rsa_slate
 
 ### The internal SLATE API host
 Host slate-api-host
   HostName ${conf_slate_api_hostname}
-  Port ${conf_slate_bastion_port}
-  User ${SLATE_API_USER}
   IdentityFile /root/.ssh/id_rsa_slate
+  Port ${conf_slate_bastion_port}
   ProxyJump slate-bastion-host
+  User ${SLATE_API_USER}
 EOF
 chmod 600 "$HOME/.ssh/config"
 
