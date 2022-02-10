@@ -111,8 +111,9 @@ ssh <ssh-host>
 | SSH Hosts             | Description                       |
 |-----------------------|-----------------------------------|
 | `fabric-bastion-host` | External Fabric SSH Bastion host. |
-| `slate-bastion-host`  | External SLATE SSH Bastion host.  |   
 | `slate-api-host`      | Internal SLATE API host.          |
+| `slate-bastion-host`  | External SLATE SSH Bastion host.  |
+| `slate-portal-host`   | Internal SLATE Portal host.       |
 
 * Not all Bastion hosts allow direct login. This is expected behavior.
 

@@ -49,6 +49,14 @@ Host slate-api-host
   Port ${conf_slate_bastion_port}
   ProxyJump slate-bastion-host
   User ${SLATE_API_USER}
+
+### The internal SLATE Portal host
+Host slate-portal-host
+  HostName portal.slateci.io
+  IdentityFile /root/.ssh/id_rsa_slate
+  Port ${conf_slate_bastion_port}
+  ProxyJump slate-bastion-host
+  User ${SLATE_API_USER}
 EOF
 chmod 600 "$HOME/.ssh/config"
 
