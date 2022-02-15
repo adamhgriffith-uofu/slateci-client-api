@@ -25,10 +25,10 @@ The `Dockerfile` provides the following build arguments:
 
 ### SSH Key Files
 
-> **_NOTE:_** All files added to `/<repo-location>/secrets/ssh` will be ignored by Git so don't worry :).
+> **_NOTE:_** All files added to `${PWD}/secrets/ssh` will be ignored by Git so don't worry :).
 
 * During the build process Docker will copy relevant SSH keys into the image.
-* Please copy all required keys below to `/<repo-location>/secrets/ssh` before building the images.
+* Please copy all required keys below to `${PWD}/secrets/ssh` before building the images.
 
 | Name                  | Required | Description                                                                                                   |
 |-----------------------|----------|---------------------------------------------------------------------------------------------------------------|
@@ -49,7 +49,7 @@ docker build --file Dockerfile --build-arg env=prod --build-arg token=<prod-toke
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api:prod
+[your@localmachine ~]$ docker run -it -v ${PWD}/work:/work slateci-client-api:prod
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
@@ -63,7 +63,7 @@ Server supported API versions: v1alpha3
 [root@1234 ~]$
 ```
 
-* Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
+* Use the `${PWD}/work:/work` volume to mount files from your local machine to the container.
 * See [SSH Commands](#ssh-commands) for information on that topic.
 
 ### Development
@@ -77,7 +77,7 @@ docker build --file Dockerfile --build-arg token=<dev-token> --build-arg usernam
 Running the image will create a new tagged container, print the connection information, and start up `/bin/bash`.
 
 ```shell
-[your@localmachine ~]$ docker run -it -v /<repo-location>/work:/work slateci-client-api:dev
+[your@localmachine ~]$ docker run -it -v ${PWD}/work:/work slateci-client-api:dev
 ======= Connection Information ========================================================================
 Endpoint: <endpoint-url>
 
@@ -91,7 +91,7 @@ Server supported API versions: v1alpha3
 [root@1234 ~]$
 ```
 
-* Use the `/<repo-location>/work:/work` volume to mount files from your local machine to the container.
+* Use the `${PWD}/work:/work` volume to mount files from your local machine to the container.
 * See [SSH Commands](#ssh-commands) for information on that topic.
 
 ## SSH Commands
