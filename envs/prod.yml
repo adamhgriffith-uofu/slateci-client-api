@@ -9,3 +9,6 @@ slate:
   bastion:
     hostname: bastion.slateci.net
     port: 22
+  portal:
+    hostname: portal.slateci.io
+    port: 22
