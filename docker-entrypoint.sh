@@ -46,7 +46,7 @@ Host slate-bastion-host
 Host slate-api-host
   HostName ${conf_slate_api_hostname}
   IdentityFile /root/.ssh/id_rsa_slate
-  Port ${conf_slate_api_port}
+  Port ${conf_slate_bastion_port}
   ProxyJump slate-bastion-host
   User ${SLATE_API_USER}
 
