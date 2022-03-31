@@ -57,6 +57,14 @@ Host slate-portal-host
   Port ${conf_slate_portal_port}
   ProxyJump slate-bastion-host
   User ${SLATE_API_USER}
+
+### The internal SLATE Jenkins host
+Host slate-jenkins-host
+  HostName ${conf_slate_jenkins_hostname}
+  IdentityFile /root/.ssh/id_rsa_slate
+  Port ${conf_slate_jenkins_port}
+  ProxyJump slate-bastion-host
+  User ${SLATE_API_USER}
 EOF
 chmod 600 "$HOME/.ssh/config"
 

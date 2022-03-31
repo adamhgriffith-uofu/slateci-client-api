@@ -12,3 +12,6 @@ slate:
   portal:
     hostname: portal.slateci.io
     port: 22
+  jenkins:
+    hostname: jenkins.slateci.io
+    port: 22
