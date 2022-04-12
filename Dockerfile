@@ -39,9 +39,6 @@ COPY ./envs ./docker/envs
 COPY ./scripts ./docker/scripts
 RUN chmod +x ./docker/scripts/yml.sh
 
-# Change working directory:
-WORKDIR /root
-
 # Set the SSH keys:
 COPY ./secrets/ssh ./.ssh/
 RUN chmod 600 -R ./.ssh/
@@ -53,8 +50,8 @@ RUN mkdir -p -m 0700 ./.slate
 RUN echo ${token} > ./.slate/token && \
     chmod 600 ./.slate/token
 
-# Set the work directory:
-RUN mkdir /work
+# Change working directory:
+WORKDIR /work
 
 # Volumes
 VOLUME [ "/work" ]
