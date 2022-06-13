@@ -15,7 +15,11 @@ ENV SLATE_CLI_TOKEN=${token}
 ENV SLATE_ENV=${env}
 
 # Package installs/updates:
-RUN dnf install bind-utils ncurses openssh-clients which -y
+RUN dnf install -y \
+    bind-utils \
+    ncurses \
+    openssh-clients \
+    which
 
 # Download and install the SLATE CLI:
 RUN curl -LO https://jenkins.slateci.io/artifacts/client/slate-linux.tar.gz && \
@@ -38,6 +42,9 @@ COPY ./envs ./docker/envs
 # Add the scripts:
 COPY ./scripts ./docker/scripts
 RUN chmod +x ./docker/scripts/yml.sh
+
+# Change working directory:
+WORKDIR /root
 
 # Set the SSH keys:
 COPY ./secrets/ssh ./.ssh/
