@@ -108,12 +108,13 @@ Instead, make use of the shorter command below using any of the predefined SSH h
 ssh <ssh-host>
 ```
 
-| SSH Hosts             | Description                       |
-|-----------------------|-----------------------------------|
-| `fabric-bastion-host` | External Fabric SSH Bastion host. |
-| `slate-api-host`      | Internal SLATE API host.          |
-| `slate-bastion-host`  | External SLATE SSH Bastion host.  |
-| `slate-portal-host`   | Internal SLATE Portal host.       |
+| SSH Hosts              | Description                          |
+|------------------------|--------------------------------------|
+| `fabric-bastion-host`  | External Fabric SSH Bastion host.    |
+| `slate-alpine-builder` | Internal Alpine client builder host. |
+| `slate-api-host`       | Internal SLATE API host.             |
+| `slate-bastion-host`   | External SLATE SSH Bastion host.     |
+| `slate-portal-host`    | Internal SLATE Portal host.          |
 
 * Not all Bastion hosts allow direct login. This is expected behavior.
 

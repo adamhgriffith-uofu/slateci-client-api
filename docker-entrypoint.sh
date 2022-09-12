@@ -65,6 +65,14 @@ Host slate-jenkins-host
   Port ${conf_slate_jenkins_port}
   ProxyJump slate-bastion-host
   User ${SLATE_API_USER}
+
+### The old SLATE client Alpine VM
+Host slate-alpine-builder
+  HostName alpine-builder.slateci.io
+  IdentityFile /root/.ssh/id_rsa_slate
+  Port 22
+  ProxyJump slate-bastion-host
+  User admin
 EOF
 chmod 600 "$HOME/.ssh/config"
 
